@@ -1,0 +1,14 @@
+FROM adoptopenjdk/openjdk11
+
+RUN apt update && apt install -y git-core
+
+RUN git clone -b master --single-branch https://github.com/dev-team-avengers/ToyLog.git
+RUN mv ToyLog toylog-api
+WORKDIR toylog-api
+
+RUN chmod a+x gradlew && \
+        ./gradlew bootjar --stacktrace
+RUN ls build/libs
+
+EXPOSE 8080
+CMD java -Dspring.profiles.active=${SPRING_PROFILE} -jar build/libs/toylog-api.jar

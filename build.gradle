@@ -48,3 +48,8 @@ dependencies {
 test {
 	useJUnitPlatform()
 }
+
+//bootJar {
+//	archiveVersion = LocalDateTime.now()
+//					.format(DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss"))
+//}
