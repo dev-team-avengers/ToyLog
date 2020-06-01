@@ -27,6 +27,12 @@ dependencies {
 	// model mapper
 //	implementation 'org.modelmapper:modelmapper:2.3.5'
 
+	// yaml
+	implementation 'net.rakugakibox.util:yaml-resource-bundle:1.1'
+
+	// mockito
+	testImplementation 'org.mockito:mockito-core:2.21.0'
+
 	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 	annotationProcessor 'org.projectlombok:lombok'
 	testAnnotationProcessor 'org.projectlombok:lombok'

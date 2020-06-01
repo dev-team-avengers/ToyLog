@@ -8,6 +8,10 @@ spring:
         console:
             enabled: true
 
+    messages:
+        basename: i18n/exception
+        encoding: UTF-8
+
     datasource:
         platform: h2
         driver-class-name: org.h2.Driver
@@ -22,7 +26,3 @@ spring:
         hibernate:
             ddl-auto: update
         show-sql: true
-
-message:
-    basename: exception
-    encoding: UTF-8

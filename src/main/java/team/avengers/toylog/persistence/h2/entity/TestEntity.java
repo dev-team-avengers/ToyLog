@@ -1,6 +1,7 @@
 package team.avengers.toylog.persistence.h2.entity;
 
 import lombok.*;
+import team.avengers.toylog.model.test.TestModifyRequestDto;
 
 import javax.persistence.*;
 
@@ -24,8 +25,8 @@ public class TestEntity {
         this.name = name;
     }
 
-    public TestEntity updateName(String newName) {
-        this.name = newName;
+    public TestEntity update(TestModifyRequestDto testModifyRequestDto) {
+        this.name = testModifyRequestDto.getName();
         return this;
     }
 }

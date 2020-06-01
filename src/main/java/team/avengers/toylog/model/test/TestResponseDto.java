@@ -1,4 +1,4 @@
-package team.avengers.toylog.model;
+package team.avengers.toylog.model.test;
 
 import lombok.*;
 import team.avengers.toylog.persistence.h2.entity.TestEntity;

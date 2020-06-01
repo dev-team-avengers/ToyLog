@@ -1,0 +1,7 @@
+unknown:
+    code: "-9999"
+    msg: "An unknown error has occurred."
+
+test-not-found:
+    code: "-9998"
+    msg: "This test not exist."
