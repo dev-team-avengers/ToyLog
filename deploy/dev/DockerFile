@@ -6,9 +6,10 @@ RUN git clone -b master --single-branch https://github.com/dev-team-avengers/Toy
 RUN mv ToyLog toylog-api
 WORKDIR toylog-api
 
-RUN chmod a+x gradlew && \
-        ./gradlew bootjar --stacktrace
-RUN ls build/libs
+RUN chmod a+x gradlew
+RUN ./gradlew bootjar --stacktrace
+RUN ls .
+RUN ls build/libs/
 
 EXPOSE 8080
-CMD java -Dspring.profiles.active=${SPRING_PROFILE} -jar build/libs/toylog-api.jar
+CMD java -Dspring.profiles.active=dev -Duser.timezone=Asia/Seoul -jar build/libs/toylog-api.jar
