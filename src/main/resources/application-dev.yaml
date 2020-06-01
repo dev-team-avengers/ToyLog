@@ -1,0 +1,28 @@
+server:
+    port: 8080
+    tomcat:
+        uri-encoding: UTF-8
+
+spring:
+    h2:
+        console:
+            enabled: true
+
+    datasource:
+        platform: h2
+        driver-class-name: org.h2.Driver
+        url: jdbc:h2:mem:toylog
+        username: toylogadmin
+        password: toylogpass
+        sql-script-encoding: UTF-8
+
+    jpa:
+        database-platform: org.hibernate.dialect.H2Dialect
+        generate-ddl: false
+        hibernate:
+            ddl-auto: update
+        show-sql: true
+
+message:
+    basename: exception
+    encoding: UTF-8
