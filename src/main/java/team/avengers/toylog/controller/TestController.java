@@ -32,12 +32,12 @@ public class TestController {
         return testService.getTestById(id);
     }
 
-    @PostMapping(value = "")
+    @PostMapping(value = "", consumes = "application/json")
     public ApiResponseDto<TestResponseDto> setTest(@RequestBody TestAddRequestDto testAddRequestDto) {
         return testSaveService.setTest(testAddRequestDto);
     }
 
-    @PutMapping(value = "/{id}")
+    @PutMapping(value = "/{id}", consumes = "application/json")
     public ApiResponseDto<TestResponseDto> updateTest(@PathVariable Long id,
                                                       @RequestBody TestModifyRequestDto testModifyRequestDto) {
         return testSaveService.updateTest(id, testModifyRequestDto);

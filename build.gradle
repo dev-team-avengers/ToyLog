@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'team.avengers'
-version = '0.0.1-SNAPSHOT'
+//version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
 configurations {
@@ -32,6 +32,10 @@ dependencies {
 
 	// mockito
 	testImplementation 'org.mockito:mockito-core:2.21.0'
+
+	// swagger(openApi)
+	implementation 'org.springdoc:springdoc-openapi-ui:1.2.18'
+	implementation 'org.springdoc:springdoc-openapi-webmvc-core:1.2.18'
 
 	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 	annotationProcessor 'org.projectlombok:lombok'
