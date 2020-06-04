@@ -42,21 +42,21 @@ deploy/{profile}/deploy.sh {profile}
     
 ### Requirements
 - Login
-    [:white_check_mark:] token이나 session 기반 로그인(jwt 등)
-    [] third-party 로그인은 고려
+    - [:white_check_mark:] token이나 session 기반 로그인(jwt 등)
+    - [] third-party 로그인은 고려
 - Registration
-    [] email 인증
-    [] 회원정보 update 가능
+    - [] email 인증 
+    - [] 회원정보 update 가능
 - Board
     - list
-        [:white_check_mark:] pin 기능
-        [] 페이지 네비게이션(페이징 처리)
-        [] 정렬
+        - [:white_check_mark:] pin 기능
+        - [] 페이지 네비게이션(페이징 처리)
+        - [] 정렬
     - write
-        [] 파일 업로드는 고려
+        - [] 파일 업로드는 고려
     - update
 - Comment
-    [] 댓글의 depth는 2-depth (대댓글)
-    [] pin 기능
+    - [] 댓글의 depth는 2-depth (대댓글)
+    - [] pin 기능
 - Search
 - Favorite
