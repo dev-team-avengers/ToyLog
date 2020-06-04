@@ -1,5 +1,26 @@
 # ToyLog
 
+## Requirements
+- Login
+    - [ ] token이나 session 기반 로그인(jwt 등)
+    - [ ] third-party 로그인은 고려
+- Registration
+    - [ ] email 인증 
+    - [ ] 회원정보 update 가능
+- Board
+    - list
+        - [ ] pin 기능
+        - [ ] 페이지 네비게이션(페이징 처리)
+        - [ ] 정렬
+    - write
+        - [ ] 파일 업로드는 고려
+    - update
+- Comment
+    - [ ] 댓글의 depth는 2-depth (대댓글)
+    - [ ] pin 기능
+- Search
+- Favorite
+
 ## Spec
 - Spring Boot 2.3.0
 - OpenJDK11
@@ -39,24 +60,3 @@ deploy/{profile}/deploy.sh {profile}
 9. 바로 오른쪽에 ▶(Run 'ToyLogApplication') 클릭
 10. 하단 로깅 목록에 'Started ToyLogApplication in OO.OO seconds (JVM running for OO.OOO)' 문구가 나오고 프로세스가 종료되지 않고 계속 돌면 성공
     - 중간에 방화벽으로 Java 실행 문구 나오면 방화벽 허용(Windows 경우)
-    
-### Requirements
-- Login
-    - [:white_check_mark:] token이나 session 기반 로그인(jwt 등)
-    - [] third-party 로그인은 고려
-- Registration
-    - [] email 인증 
-    - [] 회원정보 update 가능
-- Board
-    - list
-        - [:white_check_mark:] pin 기능
-        - [] 페이지 네비게이션(페이징 처리)
-        - [] 정렬
-    - write
-        - [] 파일 업로드는 고려
-    - update
-- Comment
-    - [] 댓글의 depth는 2-depth (대댓글)
-    - [] pin 기능
-- Search
-- Favorite
