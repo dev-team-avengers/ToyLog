@@ -28,6 +28,8 @@
 ## Links
 - Issue Tracker : https://trello.com/b/iZCFQJFg/toylog
 - Github : https://github.com/dev-team-avengers/ToyLog
+- UI Design : https://ovenapp.io/view/NPO10Hs4UK6unOK4k4Yd9LM6r0IY52Gk
+- Front Main Page : http://localhost:3000 (프론트 서버 배포 전까지)
 
 ## Deployment
 ```shell script
