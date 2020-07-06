@@ -6,6 +6,7 @@ import team.avengers.toylog.model.ApiResponseDto;
 import team.avengers.toylog.model.test.TestAddRequestDto;
 import team.avengers.toylog.model.test.TestModifyRequestDto;
 import team.avengers.toylog.model.test.TestResponseDto;
+import team.avengers.toylog.service.test.TestRemoveService;
 import team.avengers.toylog.service.test.TestSaveService;
 import team.avengers.toylog.service.test.TestService;
 
@@ -18,6 +19,8 @@ public class TestController {
     private TestService testService;
     @Autowired
     private TestSaveService testSaveService;
+    @Autowired
+    private TestRemoveService testRemoveService;
 
     @GetMapping(value = "")
     public ApiResponseDto<List<TestResponseDto>> getAllTests(@RequestParam(required = false) String name) {
@@ -41,5 +44,10 @@ public class TestController {
     public ApiResponseDto<TestResponseDto> updateTest(@PathVariable Long id,
                                                       @RequestBody TestModifyRequestDto testModifyRequestDto) {
         return testSaveService.updateTest(id, testModifyRequestDto);
+    }
+
+    @DeleteMapping(value = "/{id}")
+    public ApiResponseDto<TestResponseDto> deleteTest(@PathVariable Long id){
+        return testRemoveService.deleteTest(id);
     }
 }
