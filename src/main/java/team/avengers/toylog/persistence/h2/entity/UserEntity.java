@@ -44,7 +44,7 @@ public class UserEntity {
     private LocalDateTime updateDate = LocalDateTime.now();
 
     @Column(name = "last_login_date")
-    private LocalDateTime lastLoginDate = LocalDateTime.now();
+    private LocalDateTime lastLoginDate;
 
     public enum ThirdPartyType {
         KAKAO

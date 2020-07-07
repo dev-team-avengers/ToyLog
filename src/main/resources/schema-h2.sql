@@ -18,7 +18,7 @@ create table user_tbl(
     third_party_id VARCHAR(255),
     regist_date DATETIME DEFAULT NOW(),
     update_date DATETIME DEFAULT NOW(),
-    last_login_date DATETIME DEFAULT NOW()
+    last_login_date DATETIME
 );
 
 drop table board_tbl if exists;
