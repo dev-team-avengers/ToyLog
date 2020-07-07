@@ -14,7 +14,7 @@ create table user_tbl(
     id VARCHAR(20) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL,
     profile_image VARCHAR(255),
-    third_party_type ENUM('kakao'),
+    third_party_type ENUM('KAKAO'),
     third_party_id VARCHAR(255),
     regist_date DATETIME DEFAULT NOW(),
     update_date DATETIME DEFAULT NOW(),
