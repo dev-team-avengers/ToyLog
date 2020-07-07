@@ -5,3 +5,7 @@ unknown:
 test-not-found:
     code: "-9998"
     msg: "존재하지 않는 테스트입니다."
+
+user-not-found:
+    code: "0001"
+    msg: "존재하지 않는 유저입니다."

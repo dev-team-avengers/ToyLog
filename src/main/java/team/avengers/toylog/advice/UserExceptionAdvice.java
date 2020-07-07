@@ -7,7 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import team.avengers.toylog.advice.exception.TestNotFoundException;
+import team.avengers.toylog.advice.exception.UserNotFoundException;
 import team.avengers.toylog.model.ApiResponseDto;
 import team.avengers.toylog.service.ResponseService;
 
@@ -15,26 +15,16 @@ import javax.servlet.http.HttpServletRequest;
 
 @RequiredArgsConstructor
 @RestControllerAdvice
-public class ExceptionAdvice {
+public class UserExceptionAdvice {
     private final ResponseService<String> responseService;
     private final MessageSource messageSource;
 
-//    @ExceptionHandler(Exception.class)
-//    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-//    protected ApiResponseDto<String> defaultException(HttpServletRequest request, Exception exception) {
-//        return responseService.getFailureApiResponseDto(
-//                Integer.parseInt(getMessage("unknown.code")),
-//                getMessage("unknown.msg"),
-//                exception.getMessage()
-//        );
-//    }
-
-    @ExceptionHandler(TestNotFoundException.class)
+    @ExceptionHandler(UserNotFoundException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    protected ApiResponseDto<String> testNotFound(HttpServletRequest request, TestNotFoundException exception) {
+    protected ApiResponseDto<String> userNotFound(HttpServletRequest request, UserNotFoundException exception) {
         return responseService.getFailureApiResponseDto(
-                Integer.parseInt(getMessage("test-not-found.code")),
-                getMessage("test-not-found.msg"),
+                Integer.parseInt(getMessage("user-not-found.code")),
+                getMessage("user-not-found.msg"),
                 exception.getMessage()
         );
     }
