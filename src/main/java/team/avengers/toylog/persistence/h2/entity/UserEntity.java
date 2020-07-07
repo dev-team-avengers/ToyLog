@@ -1,9 +1,6 @@
 package team.avengers.toylog.persistence.h2.entity;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -48,5 +45,10 @@ public class UserEntity {
 
     public enum ThirdPartyType {
         KAKAO
+    }
+
+    @Builder
+    public UserEntity(Integer idx) {
+        this.idx = idx;
     }
 }
