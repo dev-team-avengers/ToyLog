@@ -28,7 +28,7 @@ public class UserEntity {
     private String profileImage;
 
     @Enumerated(value = EnumType.STRING)
-    @Column(name = "third_party_type", length = 20, nullable = false)
+    @Column(name = "third_party_type")
     private ThirdPartyType thirdPartyType;
 
     @Column(name = "third_party_id")
@@ -48,8 +48,9 @@ public class UserEntity {
     }
 
     @Builder
-    public UserEntity(Integer idx, String id) {
+    public UserEntity(Integer idx, String id, String password) {
         this.idx = idx;
         this.id = id;
+        this.password = password;
     }
 }
