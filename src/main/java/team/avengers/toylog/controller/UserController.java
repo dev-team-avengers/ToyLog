@@ -19,4 +19,9 @@ public class UserController {
     public ApiResponseDto<UserResponseDto> getUserByIdx(@PathVariable Integer idx) {
         return userService.getUserByIdx(idx);
     }
+
+    @GetMapping(value = "/{id}")
+    public ApiResponseDto<UserResponseDto> getUserById(@PathVariable String id) {
+        return userService.getUserById(id);
+    }
 }

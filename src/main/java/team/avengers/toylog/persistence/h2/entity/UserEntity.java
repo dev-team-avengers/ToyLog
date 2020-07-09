@@ -48,7 +48,8 @@ public class UserEntity {
     }
 
     @Builder
-    public UserEntity(Integer idx) {
+    public UserEntity(Integer idx, String id) {
         this.idx = idx;
+        this.id = id;
     }
 }

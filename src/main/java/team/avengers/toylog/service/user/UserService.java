@@ -22,4 +22,14 @@ public class UserService {
                                 .findById(idx)
                                 .orElseThrow(UserNotFoundException::new)));
     }
+
+    public ApiResponseDto<UserResponseDto> getUserById(String id) {
+        ResponseService<UserResponseDto> responseService = new ResponseService<> ();
+
+        return responseService.getSuccessApiResponseDto(
+                UserResponseDto.from(
+                        userRepository
+                                .findById(id)
+                                .orElseThrow(UserNotFoundException::new)));
+    }
 }
