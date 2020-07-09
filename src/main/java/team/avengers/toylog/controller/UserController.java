@@ -15,13 +15,13 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping(value = "/{idx}")
-    public ApiResponseDto<UserResponseDto> getUserByIdx(@PathVariable Integer idx) {
-        return userService.getUserByIdx(idx);
-    }
-
-    @GetMapping(value = "/{id}")
-    public ApiResponseDto<UserResponseDto> getUserById(@PathVariable String id) {
-        return userService.getUserById(id);
+    @GetMapping(value = "/{id}", produces = "application/json; charset=UTF-8")
+    public ApiResponseDto<UserResponseDto> getUserByIdx(@PathVariable String id) {
+        try {
+            Integer idx = Integer.parseInt(id);
+            return userService.getUserByIdx(idx);
+        } catch (NumberFormatException exception) {
+            return userService.getUserById(id);
+        }
     }
 }
