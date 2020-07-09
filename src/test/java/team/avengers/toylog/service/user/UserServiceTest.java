@@ -57,4 +57,36 @@ public class UserServiceTest {
         });
     }
 
+    @Test
+    public void 존재하는_id로_유저_조회() {
+        // given
+        final String id = "test_id";
+        given(userRepository.findById(id))
+                .willReturn(
+                        Optional.of(
+                                UserEntity.builder()
+                                        .id(id)
+                                        .password("")
+                                        .build()));
+
+        // when
+        ApiResponseDto<UserResponseDto> dto = userService.getUserById(id);
+
+        // then
+        assertEquals(id, dto.getData().getId());
+    }
+
+    @Test
+    public void 존재하지_않는_id로_유저_조회() {
+        // given
+        final String id = "test_id";
+        given(userRepository.findById(id))
+                .willReturn(Optional.empty());
+
+        // then
+        assertThrows(UserNotFoundException.class, () -> {
+            // when
+            userService.getUserById(id);
+        });
+    }
 }

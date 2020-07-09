@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
@@ -16,6 +17,7 @@ import team.avengers.toylog.service.ResponseService;
 import team.avengers.toylog.service.user.UserService;
 
 import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -44,6 +46,8 @@ public class UserControllerTest {
                                 UserResponseDto.from(
                                         UserEntity.builder()
                                                 .idx(idx)
+                                                .id("test_id")
+                                                .password("")
                                                 .build())));
 
         // when
@@ -51,9 +55,6 @@ public class UserControllerTest {
 
         // then
         actions.andExpect(status().isOk())
-                .andDo(f -> {
-                    System.out.println(f.getResponse().getContentAsString());
-                })
                 .andExpect(jsonPath("$.code", Matchers.is(0)));
     }
 
@@ -70,6 +71,47 @@ public class UserControllerTest {
 
         // then
         actions.andExpect(status().isInternalServerError())
+                .andExpect(jsonPath("$.code", Matchers.is(1)));
+    }
+
+    @Test
+    public void id로_유저_조회_성공_api() throws Exception {
+        // given
+        ResponseService<UserResponseDto> responseService = new ResponseService<> ();
+        final String id = "test_id";
+        given(userService.getUserById(id))
+                .willReturn(
+                        responseService.getSuccessApiResponseDto(
+                                UserResponseDto.from(
+                                        UserEntity.builder()
+                                                .id(id)
+                                                .password("")
+                                                .build())));
+
+        // when
+        final ResultActions actions = mockMvc.perform(get(BASE_URL + "/{id}", id));
+
+        //then
+        actions.andExpect(status().isOk())
+                .andExpect(jsonPath("$.code", Matchers.is(0)));
+    }
+
+    @Test
+    public void id로_유저_조회_실패_api() throws Exception {
+        // given
+        ResponseService<UserResponseDto> responseService = new ResponseService<> ();
+        final String id = anyString();
+        given(userService.getUserById(id))
+                .willThrow(UserNotFoundException.class);
+
+        // when
+        final ResultActions actions = mockMvc.perform(
+                get(BASE_URL + "/{id}", "test12345678901234567")
+                        .accept(MediaType.APPLICATION_JSON_UTF8));
+
+        // then
+        actions.andExpect(status().isInternalServerError())
+                .andDo(f -> System.out.println(f.getResponse().getContentAsString()))
                 .andExpect(jsonPath("$.code", Matchers.is(1)));
     }
 }
